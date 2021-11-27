@@ -29,8 +29,10 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                @if(Auth::user()->status = 1)
-                    <a class="navbar-brand btn btn-success" href="{{ url('admin/janrs') }}"> Admin </a>
+                 @if(isset(Auth::user()->status))
+                    @if(Auth::user()->status == 1)
+                        <a class="navbar-brand btn btn-success" href="{{ url('admin/janrs') }}"> Admin </a>
+                    @endif
                 @endif
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
