@@ -20,7 +20,7 @@ class ApiController extends Controller
     }
     protected function AllFilm(){
         $models = Films::paginate(10);
-        return response()->json(['film'=>$model]);
+        return response()->json(['film'=>$models]);
     }
     protected function Film($id){
         $model = Films::where('id', $id)->paginate(10);
