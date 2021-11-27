@@ -6,6 +6,7 @@ use App\Models\Films;
 use App\Models\Janr;
 use http\Url;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ApiController extends Controller
 {
@@ -19,8 +20,15 @@ class ApiController extends Controller
         return response()->json(['film'=>$model]);
     }
     protected function AllFilm(){
-        $models = Films::paginate(10);
-        return response()->json(['film'=>$models]);
+        $url = url('storage/');
+        $models = Films::select([
+            'id',
+            'name',
+            'publication',
+            DB::raw("concat_ws('', '{$url}/',image) as image"),
+            'janr_id'
+        ])->where('status', 1)->paginate(10);
+        return response()->json(['film' => $models]);
     }
     protected function Film($id){
         $model = Films::where('id', $id)->paginate(10);
