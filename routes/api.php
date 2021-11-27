@@ -17,7 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::get('/janrs', [App\Http\Controllers\ApiController::class, 'Janrs'])->name('Janrs');
-Route::get('/films/{id}', [App\Http\Controllers\ApiController::class, 'Films'])->name('Films');
-Route::get('/allfilm', [App\Http\Controllers\ApiController::class, 'AllFilm'])->name('AllFilm');
-Route::get('/film/{id}', [App\Http\Controllers\ApiController::class, 'Film'])->name('Film');
+Route::get('/janrs', [App\Http\Controllers\ApiController::class, 'Janrs']);
+Route::get('/films/{id}', [App\Http\Controllers\ApiController::class, 'Films']);
+Route::get('/allfilm', [App\Http\Controllers\ApiController::class, 'AllFilm']);
+Route::get('/film/{id}', [App\Http\Controllers\ApiController::class, 'Film']);
+Route::get('/status/{id}', [App\Http\Controllers\ApiController::class, 'ChangeStatus']);

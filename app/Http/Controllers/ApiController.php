@@ -34,4 +34,9 @@ class ApiController extends Controller
         $model = Films::where('id', $id)->paginate(10);
         return response()->json(['film'=>$model]);
     }
+    protected function ChangeStatus($id){
+        $film = Films::findOrFail($id);
+        $film->status = 1;
+        return response()->json(['success' => $film->save()]);
+    }
 }
